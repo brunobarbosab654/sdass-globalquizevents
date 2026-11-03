@@ -1,0 +1,23 @@
+{
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/inicio/",
+      "permanent": false
+    }
+  ],
+  "rewrites": [
+    { "source": "/inicio", "destination": "/inicio/index.html" },
+    { "source": "/inicio/", "destination": "/inicio/index.html" },
+    { "source": "/up1", "destination": "/up1/index.html" },
+    { "source": "/up1/", "destination": "/up1/index.html" },
+    { "source": "/up2", "destination": "/up2/index.html" },
+    { "source": "/up2/", "destination": "/up2/index.html" },
+    { "source": "/up3", "destination": "/up3/index.html" },
+    { "source": "/up3/", "destination": "/up3/index.html" },
+    { "source": "/thankyou", "destination": "/thankyou/index.html" },
+    { "source": "/thankyou/", "destination": "/thankyou/index.html" },
+    { "source": "/refund", "destination": "/refund/index.html" },
+    { "source": "/refund/", "destination": "/refund/index.html" }
+  ]
+}

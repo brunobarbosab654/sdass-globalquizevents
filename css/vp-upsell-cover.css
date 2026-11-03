@@ -1,0 +1,19 @@
+#vendepay-upsell-container {
+  width: 100%;
+  display: block;
+  overflow: hidden;
+  height: 120px;
+  max-height: 120px;
+}
+
+#vendepay-upsell-container iframe {
+  width: 100% !important;
+  max-width: 100% !important;
+  border: 0 !important;
+  display: block !important;
+  /* Full widget (~card + Pay/No); negative margin shows only bottom buttons */
+  min-height: 260px !important;
+  height: 260px !important;
+  max-height: none !important;
+  margin-top: -140px !important;
+}
