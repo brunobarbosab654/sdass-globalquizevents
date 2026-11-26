@@ -26,8 +26,7 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="robots" content="noindex, nofollow">
-  <link rel="stylesheet" href="/css/vp-upsell-cover.css">
-  <style>@import "https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap";*,:before,:after{box-sizing:border-box;margin:0;padding:0}body{background:#0d0d0d;justify-content:center;align-items:center;min-height:100vh;font-family:Inter,system-ui,sans-serif;display:flex}.page{text-align:center;flex-direction:column;align-items:center;width:100%;max-width:390px;padding:48px 28px 56px;display:flex}.title{letter-spacing:-.5px;background:linear-gradient(135deg,#fe2c55,#25f4ee);-webkit-text-fill-color:transparent;-webkit-background-clip:text;background-clip:text;margin-bottom:32px;font-size:30px;font-weight:900;line-height:1.2}.badge{filter:drop-shadow(0 8px 24px #25f4ee40);width:150px;height:150px;margin-bottom:32px}.subtitle{color:#888;margin-bottom:40px;font-size:15px;font-weight:600;line-height:1.6}#vendepay-upsell-container{border-radius:14px;width:100%}</style>
+  <style>@import "https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap";*,:before,:after{box-sizing:border-box;margin:0;padding:0}body{background:#0d0d0d;justify-content:center;align-items:center;min-height:100vh;font-family:Inter,system-ui,sans-serif;display:flex}.page{text-align:center;flex-direction:column;align-items:center;width:100%;max-width:390px;padding:48px 28px 56px;display:flex}.title{letter-spacing:-.5px;background:linear-gradient(135deg,#fe2c55,#25f4ee);-webkit-text-fill-color:transparent;-webkit-background-clip:text;background-clip:text;margin-bottom:32px;font-size:30px;font-weight:900;line-height:1.2}.badge{filter:drop-shadow(0 8px 24px #25f4ee40);width:150px;height:150px;margin-bottom:32px}.subtitle{color:#888;margin-bottom:40px;font-size:15px;font-weight:600;line-height:1.6}.upsell-checkout-btn{display:flex;width:100%;align-items:center;justify-content:center;border-radius:999px;background:#FE2C55;padding:16px 24px;font-size:15px;font-weight:900;text-transform:uppercase;letter-spacing:.04em;color:#fff;text-decoration:none;box-shadow:0 12px 28px rgba(254,44,85,.35)}.upsell-checkout-btn:active{transform:scale(.98)}.upsell-skip{margin-top:14px;display:block;font-size:12px;font-weight:600;color:#777;text-decoration:underline;text-underline-offset:2px}</style>
 </head>
 <body>
   <div class="page">
@@ -49,17 +48,16 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
     </svg>
 
     <p class="subtitle">Toca el botón de abajo para<br/>completar el proceso.</p>
+    <a
+      id="upsell-checkout-btn"
+      href="https://xpag.global/pay/1TZ6rrSF"
+      data-checkout="1"
+      class="upsell-checkout-btn"
+    >
+      Completar retiro · $497,00 MXN
+    </a>
+    <a href="/mx/thankyou/" class="upsell-skip">Continuar sin completar</a>
 
-    <!-- Container onde o upsell será exibido -->
-    <div id="vendepay-upsell-container"></div>
-
-    <!-- Script do widget Vendepay Upsell -->
-    <script src="https://widget.vendepay.com/upsell-widget/v1/vendepay-upsell-widget-1.0.16.js?upsellId=5d7e7294-9bed-4dfe-ae13-fff0ee34be39"
-            onload="window.VendepayUpsellWidget && window.VendepayUpsellWidget.showIframe('vendepay-upsell-container')">
-    </script>
-    <script src="/js/vp-upsell-cover.js"></script>
-    <script>window.COOUD_PP_NEXT = '/mx/thankyou/';</script>
-    <script src="/cooud-oneclick.js"></script>
     <script src="/js/funnel-track.js" defer></script>
 
   </div>

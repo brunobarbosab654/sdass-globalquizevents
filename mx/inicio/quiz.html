@@ -44,6 +44,7 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--fg);min-h
 .saldo-badge{background:hsl(346 97% 55%/.12);border-radius:9999px;padding:7px 14px;display:flex;align-items:center;gap:4px}
 .saldo-prefix{font-size:14px;font-weight:800;color:var(--primary);line-height:1}
 .saldo-val{font-size:14px;font-weight:800;color:var(--fg);font-variant-numeric:tabular-nums;line-height:1}
+.saldo-suffix{font-size:11px;font-weight:800;color:var(--primary);line-height:1}
 
 /* Sacar btn — só aparece no final */
 .sacar-btn{background:var(--primary);color:#fff;border:none;border-radius:9999px;padding:8px 18px;font-size:12px;font-weight:800;font-family:'Poppins',sans-serif;cursor:pointer;letter-spacing:.04em;transition:transform .15s;display:none}
@@ -160,8 +161,8 @@ canvas#confetti{position:fixed;inset:0;pointer-events:none;z-index:999;display:n
   </div>
   <div class="h-right">
     <div class="saldo-badge">
-      <span class="saldo-prefix">MX$</span>
-      <span class="saldo-val" id="balance">0.00</span>
+      <span class="saldo-prefix">$</span>
+      <span class="saldo-val" id="balance">0,00</span><span class="saldo-suffix"> MXN</span>
     </div>
     <button class="sacar-btn" id="sacar-btn" onclick="showBlock()">RETIRAR</button>
   </div>
@@ -194,8 +195,8 @@ canvas#confetti{position:fixed;inset:0;pointer-events:none;z-index:999;display:n
     <div class="m-icon">🎁</div>
     <div class="m-title">¡Nueva recompensa!</div>
     <div class="m-sub">Ganaste</div>
-    <div class="m-amount" id="rew-amt">MX$0.00</div>
-    <div class="m-total">Saldo total: <strong id="rew-total">MX$0.00</strong></div>
+    <div class="m-amount" id="rew-amt">$0,00 MXN</div>
+    <div class="m-total">Saldo total: <strong id="rew-total">$0,00 MXN</strong></div>
     <div class="m-note" id="rew-note">Sigue respondiendo para aumentar tu saldo</div>
     <button class="m-btn" id="rew-btn" onclick="closeReward()">Seguir ganando</button>
   </div>
@@ -207,7 +208,7 @@ canvas#confetti{position:fixed;inset:0;pointer-events:none;z-index:999;display:n
     <div class="f-trophy">🏆</div>
     <div class="f-label">¡Felicidades! 🎉</div>
     <div class="f-title">Completaste la encuesta y ganaste</div>
-    <div class="f-amount" id="final-amt">MX$0.00</div>
+    <div class="f-amount" id="final-amt">$0,00 MXN</div>
     <div class="f-note">¡Gracias por completar la encuesta!</div>
     <button class="f-btn" onclick="goWithdraw()">Reclamar recompensa</button>
   </div>
@@ -245,14 +246,14 @@ const Qs=[
   {q:"¿Cuál es tu rango de edad?",opts:[["🧑‍🎓","13-17"],["🎉","18-24"],["👩‍💼","25-34"],["👵","35+"]]}
 ];
 
-// Rewards somam ~868 no total
-const rewards=[1469.14,1622.96,1501.68,1605.21,1416.88,1668.31,1543.09,1638.73,1536.19,1586.47,1543.09];
+// Rewards somam ~9870.2 MXN no total
+const rewards=[846.42,935.04,865.17,924.82,816.32,961.17,889.03,944.13,885.05,914.02,889.03];
 
 // Checkpoints onde o modal aparece: após perguntas 3, 7 e 11 (índices 3, 7, 10)
 const rewardCheckpoints = new Set([3, 7, 10]);
 
 const names=["Valentina Hernández","Santiago López","Regina García","Mateo Ramírez","Camila Torres","Diego Flores","Ximena Morales","Emiliano Cruz","Sofía Reyes","Leonardo Díaz"];
-const saqAmt=[12315.14,14419.26,10111.43,16665.37,13376.08,15768.11,10666.55,14010.07];
+const saqAmt=[7095.18,8307.44,5825.55,9601.5,7706.42,9084.56,6145.37,8071.69];
 
 // Pega cidade da URL se veio da presell
 const urlParams = new URLSearchParams(window.location.search);
@@ -263,7 +264,11 @@ const cities = geoCity
 
 let curQ=0, sel=null, total=0, accumulatedSinceLastModal=0;
 
-function fmt(v){return 'MX$'+v.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+function fmt(v){
+  var parts = Number(v).toFixed(2).split('.');
+  parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+  return '$' + parts[0] + ',' + parts[1] + ' MXN';
+}
 
 function animVal(el,to,dur=800){
   const s=performance.now();
@@ -278,7 +283,9 @@ function animBalance(from,to){
   const s=performance.now(),el=document.getElementById('balance');
   (function f(n){
     const t=Math.min((n-s)/800,1),e=1-Math.pow(1-t,3);
-    el.textContent=(from+(to-from)*e).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    var parts=(from+(to-from)*e).toFixed(2).split('.');
+    parts[0]=parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    el.textContent=parts[0]+','+parts[1];
     if(t<1)requestAnimationFrame(f);
     else{
       // Pulse animation on balance after update
@@ -363,7 +370,7 @@ function _doConfirm(){
     const el=document.getElementById('rew-amt');
     const totalEl=document.getElementById('rew-total');
     const noteEl=document.getElementById('rew-note');
-    el.textContent='MX$0.00';
+    el.textContent='$0,00 MXN';
     totalEl.textContent=fmt(total);
     noteEl.textContent = curQ < Qs.length
       ? `¡${Qs.length - curQ === 1 ? 'Falta 1 pregunta' : 'Faltan ' + (Qs.length - curQ) + ' preguntas'} para desbloquear el retiro!`
@@ -415,7 +422,7 @@ function nextQuestion(){
 function animFinal(){
   document.getElementById('sacar-btn').classList.add('visible');
   const el=document.getElementById('final-amt');
-  el.textContent='MX$0.00';
+  el.textContent='$0,00 MXN';
   document.getElementById('final-ov').classList.add('on');
   animVal(el, total, 1500);
   document.getElementById('prog').style.width='100%';

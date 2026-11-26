@@ -7,6 +7,5 @@ Static TikTok pay funnel.
 - Mexico (español, MXN): `/mx/inicio/` with the same steps under `/mx/`
 - Legacy paths (`/inicio/`, `/up1/`, `/thankyou/`, `/refund/`) redirect to the English funnel
 
-MXN amounts use the Banco de México FIX rate of 19.72 pesos per dollar (26 Nov 2026). The Vendepay checkout and upsell product IDs are unchanged.
-
+MX funnel balance is $9.870,20 MXN. Fees: front $197,00 MXN, up1 $297,00 MXN, up2 $349,00 MXN, up3 $497,00 MXN. MX upsells use xpag.global checkout buttons (not Vendepay one-click).
 Connect this repository to the Vercel project `globalquizevents` (root directory = repo root).

