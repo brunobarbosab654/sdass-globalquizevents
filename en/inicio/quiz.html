@@ -335,6 +335,7 @@ function selectOpt(i){
 
 function confirmAnswer(){
   if(sel===null)return;
+  unlockQuizAudio();
   // Micro-delay com estado de processamento
   const btn = document.getElementById('cont-btn');
   btn.classList.remove('active');
@@ -354,6 +355,9 @@ function _doConfirm(){
   total+=r;
   accumulatedSinceLastModal+=r;
   curQ++;
+
+  // Reward evaluation sound on balance credit
+  playCoinSound();
 
   // Atualiza balance animado
   animBalance(prev,total);
@@ -381,7 +385,6 @@ function _doConfirm(){
       if(rewIcon) rewIcon.textContent = '🎁';
       if(rewTitle) { rewTitle.textContent = 'New reward!'; rewTitle.style.color = 'var(--reward)'; }
     }
-    playCoinSound();
     document.getElementById('rew-ov').classList.add('on');
     animVal(el, accumulatedSinceLastModal);
     accumulatedSinceLastModal=0;
@@ -417,6 +420,7 @@ function animFinal(){
   const el=document.getElementById('final-amt');
   el.textContent='$0.00';
   document.getElementById('final-ov').classList.add('on');
+  playCoinSound();
   animVal(el, total, 1500);
   document.getElementById('prog').style.width='100%';
   // Confetti depois do modal abrir
@@ -464,15 +468,41 @@ function showNotif(){
 }
 
 
-// ── Som cash register ───────────────────────────────────────
+// ── Cash register sound (quiz evaluation) ───────────────────
 const _cashAudio = new Audio('./media/cashregister.mp3');
 _cashAudio.preload = 'auto';
-_cashAudio.volume = 0.6;
+_cashAudio.volume = 0.65;
+let _quizAudioReady = false;
+
+function unlockQuizAudio(){
+  if(_quizAudioReady) return;
+  try{
+    _cashAudio.muted = true;
+    const p = _cashAudio.play();
+    if(p && p.then){
+      p.then(function(){
+        _cashAudio.pause();
+        _cashAudio.currentTime = 0;
+        _cashAudio.muted = false;
+        _quizAudioReady = true;
+      }).catch(function(){
+        _cashAudio.muted = false;
+      });
+    } else {
+      _cashAudio.muted = false;
+    }
+  } catch(e){
+    _cashAudio.muted = false;
+  }
+}
 
 function playCoinSound(){
   try{
+    _cashAudio.muted = false;
     _cashAudio.currentTime = 0;
-    _cashAudio.play().catch(function(){});
+    const p = _cashAudio.play();
+    if(p && p.catch) p.catch(function(){});
+    _quizAudioReady = true;
   } catch(e){}
 }
 
