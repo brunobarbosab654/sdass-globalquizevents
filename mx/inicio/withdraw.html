@@ -22,7 +22,6 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
   })(window, document, "clarity", "script", "wce5x17q6q");
 </script>
 <script src="js/utm-handler.js" data-token="f89b000e-5b4e-4404-9a2c-6282b60daf2f"></script>
-<script src="_shared/ab-vsl.js"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Redeem Rewards — TikTok</title>
@@ -452,33 +451,6 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--fg);min-h
     dest.searchParams.set('name', name);
     dest.searchParams.set('account', account);
     dest.searchParams.set('account_label', meta.accountLabel);
-    var vsl = (typeof window.inicioVslVariant === 'function')
-      ? window.inicioVslVariant()
-      : (document.documentElement.getAttribute('data-vsl') || 'sem');
-    dest.searchParams.set('vsl', vsl);
-
-    // Flag: play VSL with sound only after landing on registration (never on withdraw)
-    try {
-      sessionStorage.setItem('inicio_autosound', vsl === 'com' ? '1' : '0');
-      sessionStorage.setItem('inicio_from_continue', '1');
-    } catch (eFlag) {}
-
-    // COM: sync handoff keeps the Continue gesture so autoplay-with-sound works
-    if (vsl === 'com') {
-      try {
-        var xhr = new XMLHttpRequest();
-        xhr.open('GET', dest.href, false);
-        xhr.send(null);
-        if (xhr.status >= 200 && xhr.status < 300 && xhr.responseText) {
-          history.pushState({ inicioReg: 1 }, '', dest.href);
-          document.open();
-          document.write(xhr.responseText);
-          document.close();
-          return;
-        }
-      } catch (eXhr) {}
-    }
-
     window.location.href = dest.toString();
   };
 
