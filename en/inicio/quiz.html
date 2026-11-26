@@ -329,6 +329,7 @@ function render(){
 
 function selectOpt(i){
   sel=i;
+  unlockQuizAudio();
   document.querySelectorAll('.opt').forEach((o,idx)=>o.classList.toggle('sel',idx===i));
   document.getElementById('cont-btn').classList.add('active');
 }
@@ -336,6 +337,8 @@ function selectOpt(i){
 function confirmAnswer(){
   if(sel===null)return;
   unlockQuizAudio();
+  // Play inside the click gesture (browser autoplay)
+  playCoinSound();
   // Micro-delay com estado de processamento
   const btn = document.getElementById('cont-btn');
   btn.classList.remove('active');
@@ -355,9 +358,6 @@ function _doConfirm(){
   total+=r;
   accumulatedSinceLastModal+=r;
   curQ++;
-
-  // Reward evaluation sound on balance credit
-  playCoinSound();
 
   // Atualiza balance animado
   animBalance(prev,total);
@@ -468,42 +468,63 @@ function showNotif(){
 }
 
 
-// ── Cash register sound (quiz evaluation) ───────────────────
-const _cashAudio = new Audio('./media/cashregister.mp3');
-_cashAudio.preload = 'auto';
-_cashAudio.volume = 0.65;
-let _quizAudioReady = false;
+// ── Evaluation sound (Web Audio — no external file) ─────────
+let _audioCtx = null;
+
+function getQuizAudioCtx(){
+  try{
+    const AC = window.AudioContext || window.webkitAudioContext;
+    if(!AC) return null;
+    if(!_audioCtx) _audioCtx = new AC();
+    return _audioCtx;
+  } catch(e){
+    return null;
+  }
+}
 
 function unlockQuizAudio(){
-  if(_quizAudioReady) return;
-  try{
-    _cashAudio.muted = true;
-    const p = _cashAudio.play();
-    if(p && p.then){
-      p.then(function(){
-        _cashAudio.pause();
-        _cashAudio.currentTime = 0;
-        _cashAudio.muted = false;
-        _quizAudioReady = true;
-      }).catch(function(){
-        _cashAudio.muted = false;
-      });
-    } else {
-      _cashAudio.muted = false;
-    }
-  } catch(e){
-    _cashAudio.muted = false;
+  const ctx = getQuizAudioCtx();
+  if(!ctx) return;
+  if(ctx.state === 'suspended'){
+    ctx.resume().catch(function(){});
   }
 }
 
 function playCoinSound(){
-  try{
-    _cashAudio.muted = false;
-    _cashAudio.currentTime = 0;
-    const p = _cashAudio.play();
-    if(p && p.catch) p.catch(function(){});
-    _quizAudioReady = true;
-  } catch(e){}
+  const ctx = getQuizAudioCtx();
+  if(!ctx) return;
+
+  function fire(){
+    try{
+      const now = ctx.currentTime;
+      function tone(freq, t0, dur, vol, type){
+        const o = ctx.createOscillator();
+        const g = ctx.createGain();
+        o.type = type || 'triangle';
+        o.frequency.setValueAtTime(freq, t0);
+        g.gain.setValueAtTime(0.0001, t0);
+        g.gain.exponentialRampToValueAtTime(vol, t0 + 0.012);
+        g.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);
+        o.connect(g);
+        g.connect(ctx.destination);
+        o.start(t0);
+        o.stop(t0 + dur + 0.03);
+      }
+      // Cha-ching: bright ding + second metallic hit
+      tone(1318.5, now, 0.38, 0.42, 'triangle');
+      tone(1760.0, now, 0.30, 0.22, 'sine');
+      tone(2093.0, now + 0.11, 0.45, 0.36, 'triangle');
+      tone(2637.0, now + 0.11, 0.28, 0.16, 'sine');
+      // Short click
+      tone(4200, now, 0.05, 0.18, 'square');
+    } catch(e){}
+  }
+
+  if(ctx.state === 'suspended'){
+    ctx.resume().then(fire).catch(function(){});
+  } else {
+    fire();
+  }
 }
 
 // Notificações — primeira em 3s, depois 8–12s aleatório
