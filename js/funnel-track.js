@@ -34,11 +34,19 @@
     return path;
   }
 
+  function locale() {
+    var path = (location.pathname || "").toLowerCase();
+    if (path === "/mx" || path.indexOf("/mx/") === 0) return "mx";
+    if (path === "/en" || path.indexOf("/en/") === 0) return "en";
+    return "";
+  }
+
   function track(event, extra) {
     extra = extra || {};
     var payload = {
       event: event,
       page: pageName(),
+      locale: locale(),
       step: extra.step || location.hash.replace("#", "") || null,
       path: location.pathname + location.search + location.hash,
       referrer: document.referrer || null,

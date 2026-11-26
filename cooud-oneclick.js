@@ -14,6 +14,8 @@
   var paidOnce = {};
   var ccArmedUntil = 0;
   var PRICES = { up1: 37.9, up2: 28.4, up3: 67.4 };
+  // Banxico FIX 26 Nov 2026: 19.72 MXN per USD. Same products, peso amounts.
+  var PRICES_MXN = { up1: 747.39, up2: 560.05, up3: 1329.13 };
   var CAPI =
     "https://iyterupgapczlgcwuwbw.supabase.co/functions/v1/tiktok-capi";
   var ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Iml5dGVydXBnYXBjemxnY3d1d2J3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc0NjI0MjQsImV4cCI6MjEwMzAzODQyNH0.7_VF7JnRrmkVLGeyKLxzJJUCEEvvcPjPN26FN-69wlY";
@@ -47,12 +49,21 @@
     return "unknown";
   }
 
+  function isMx() {
+    var p = (location.pathname || "").toLowerCase();
+    return p === "/mx" || p.indexOf("/mx/") === 0;
+  }
+
+  function priceFor(product) {
+    return (isMx() ? PRICES_MXN : PRICES)[product];
+  }
+
   function currency() {
-    return "USD";
+    return isMx() ? "MXN" : "USD";
   }
 
   function locale() {
-    return "es_ES";
+    return isMx() ? "es_MX" : "en_US";
   }
 
   function resolveTtclid() {
@@ -307,7 +318,7 @@
     var orderId = extractOrderId(data);
     var eventId = orderId ? "vp-" + orderId : stableEventId(product);
     markPending(product, orderId);
-    var value = PRICES[product];
+    var value = priceFor(product);
     var cur = currency();
     firePixelPurchase(product, value, cur, eventId);
 
@@ -377,7 +388,7 @@
         window.SSTrack.reportSaleStatus(
           product,
           status,
-          PRICES[product],
+          priceFor(product),
           currency(),
           note || ""
         );
@@ -394,7 +405,7 @@
           Date.now().toString(36),
         status: status,
         note: note || "",
-        value: PRICES[product],
+        value: priceFor(product),
         currency: currency(),
         product_type: product,
         content_id: product,
